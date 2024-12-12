@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Materias</title>
+    <link rel="stylesheet" href="vista_Profesores.css">
+</head>
+<body>
+    <header class="navbar">
+        <h1>Editar Materias</h1>
+    </header>
+
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <h1>Panel de Gestión de Materias</h1>
+            <button class="btn-add" onclick="abrirModal()">Agregar Materia</button>
+        </header>
+
+        <table class="materias-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Materia</th>
+                    <th>Profesor</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Matemáticas</td>
+                    <td>Juan Pérez</td>
+                    <td>
+                        <button class="btn-edit" onclick="editarMateria(1)">Editar</button>
+                        <button class="btn-delete" onclick="eliminarMateria(1)">Eliminar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Historia</td>
+                    <td>Ana López</td>
+                    <td>
+                        <button class="btn-edit" onclick="editarMateria(2)">Editar</button>
+                        <button class="btn-delete" onclick="eliminarMateria(2)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2>Agregar/Editar Materia</h2>
+            <form>
+                <div class="input-group">
+                    <label for="materia">Nombre de la Materia</label>
+                    <input type="text" id="materia" name="materia" placeholder="Escribe el nombre de la materia" required>
+                </div>
+                <div class="input-group">
+                    <label for="profesor">Nombre del Profesor</label>
+                    <input type="text" id="profesor" name="profesor" placeholder="Escribe el nombre del profesor" required>
+                </div>
+                <button type="submit" class="btn-confirm">Confirmar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function abrirModal() {
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function editarMateria(id) {
+            alert(`Función para editar la materia con ID: ${id}`);
+            abrirModal();
+        }
+
+        function eliminarMateria(id) {
+            const confirmacion = confirm(`¿Seguro que deseas eliminar la materia con ID: ${id}?`);
+            if (confirmacion) {
+                alert(`Materia con ID: ${id} eliminada.`);
+            }
+        }
+    </script>
+</body>
+</html>
